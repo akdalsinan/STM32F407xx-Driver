@@ -54,7 +54,17 @@
 											tempValue=READ_BITS(RCC->APB2ENR,RCC_APB2ENR_SPI1);\
 											UNUSED(tempValue);\
         								   }while(0)
+
 #define RCC_SP1_CLK_DISABLE			CLEAR_BIT(RCC->APB2ENR,RCC_APB2ENR_SPI1)
+
+
+#define RCC_USART1_CLK_ENABLE()			do{ uint32_t tempValue=0;	\
+											SET_BIT(RCC->APB2ENR,RCC_APB2ENR_USART1);\
+											tempValue=READ_BITS(RCC->APB2ENR,RCC_APB2ENR_USART1);\
+											UNUSED(tempValue);\
+        								   }while(0)
+
+
 
 /*
  *  RCC APB1 peripherals clock control macro definition
@@ -67,14 +77,34 @@
 											UNUSED(tempValue);\
         								   }while(0)
 
-#define RCC_SP2_CLK_DISABLE			CLEAR_BIT(RCC->APB1ENR,RCC_APB1ENR_SPI2)
+#define RCC_SP2_CLK_DISABLE				CLEAR_BIT(RCC->APB1ENR,RCC_APB1ENR_SPI2)
+
+
+#define RCC_USART2_CLK_ENABLE()			do{ uint32_t tempValue=0;	\
+											SET_BIT(RCC->APB1ENR,RCC_APB1ENR_USART2);\
+											tempValue=READ_BITS(RCC->APB1ENR,RCC_APB1ENR_USART2);\
+											UNUSED(tempValue);\
+        								   }while(0)
+
+#define RCC_USART2_CLK_DISABLE			CLEAR_BIT(RCC->APB1ENR,RCC_APB1ENR_USART2)
+
+#define RCC_USART3_CLK_ENABLE()			do{ uint32_t tempValue=0;	\
+											SET_BIT(RCC->APB1ENR,RCC_APB1ENR_USART3);\
+											tempValue=READ_BITS(RCC->APB1ENR,RCC_APB1ENR_USART3);\
+											UNUSED(tempValue);\
+        								   }while(0)
 
 
 
 
 
+uint32_t RCC_GetSystemClock(void);
 
+uint32_t RCC_GetHClock(void);
 
+uint32_t RCC_GetAPB1Clock(void);
+
+uint32_t RCC_GetAPB2Clock(void);
 
 
 #endif /* INC_RCC_H_ */
